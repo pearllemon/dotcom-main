@@ -1,0 +1,141 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Help | Save This Life Microchip and Pet Recovery System</title>
+    <link href="/public/img/logo_new.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="/public/css/bootstrap.4.4.1.min.css" />
+    <link rel="stylesheet" href="/public/css/font-awesome.min.css">
+    <script src="http://elasticlunr.com/elasticlunr.min.js"></script>
+    <meta name="keywords" content="Save This Life , Save This Life Microchip and Pet Recovery System">
+    <meta name="description" content="What if there were a way to do a quick Google™ search to help you find your lost pet? Save This Life has patented a recovery system to do exactly that!">
+    <link rel="canonical" href="https://www.savethislife.com/">
+    <style>
+        .clean-block.clean-hero {
+            align-items: unset;
+        }
+        .list-group-item {
+            background-color: transparent;
+            border: none;
+        }
+        .list-group {
+            background-color: white;
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            max-height: 300px;
+            overflow: auto;
+        }
+        .dropdown-content {
+            border-radius: 2rem;
+            text-align: left;
+        }
+        .search-input {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+            border: none;
+            width: 100%;
+            padding-left: 2rem;
+        }
+        .search-input:focus {
+            outline: none;
+        }
+        .form-control-lg {
+            height: calc(1.5em + 2rem + 2px);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page landing-page">
+        <section class="clean-block clean-hero" style="background-image: linear-gradient(45deg, rgba(235,8,139,0.45) 10%, rgba(0, 191, 165, 0.85) 80%),url(public/img/header-cleaned-big.png);color: rgba(235,8,139,0.45);background-position: right;height: -webkit-fill-available;">
+            <div class="text-center text" style="max-width: 600px;width:100%;padding-top: 2rem;"><img src="public/img/logo_new1.png" style="width: 200px;" />
+                <h2 style="margin-top: 20px;">How can we help you today? <br/>
+                    <p>(scroll down to find more items)</p></h2>
+                
+                <div class="row">
+                    <div class="col">
+                            <div id="actions" class="list-group" 
+                                style="width: 100%;">
+                                <a href="https://zfrmz.com/7iyMFjdTGjQmSkYxu30H" class="list-group-item list-group-item-action">
+                                    Report Found Pet
+                                </a>
+                                <a href="https://zfrmz.com/mUCJZ2VizJHuTla7Wzpc" class="list-group-item list-group-item-action">
+                                    Report My Pet as Missing
+                                </a>
+                                <a href="https://po.savethislife.com/signup" class="list-group-item list-group-item-action">
+                                    Register Microchip (STL or another brand)
+                                </a>
+                                <a href="https://zfrmz.com/bNV33g2GE4BZGAgBWLB4" class="list-group-item list-group-item-action">
+                                    Report Microchip Not in Google
+                                </a>
+                                
+                                <a href="https://zfrmz.com/tO5ccPDBJ7SN3n7i6zd8" class="list-group-item list-group-item-action">
+                                    Fax number not working
+                                </a>
+                                <a href="https://po.savethislife.com/public-order-tag" class="list-group-item list-group-item-action">
+                                    Order Replacement Pet ID Tag
+                                </a>
+                                
+                                <a href="https://savethislife.com/contact-save-this-life?id=4" class="list-group-item list-group-item-action">
+                                    Combine multiple pets under one account
+                                </a>
+                                <a href="https://savethislife.com/contact-save-this-life?id=3" class="list-group-item list-group-item-action">
+                                    Cannot access my account
+                                </a>
+                                <a href="https://savethislife.com/contact-us" class="list-group-item list-group-item-action">
+                                    Contact Save This Life
+                                </a>
+                                <a href="https://app.savethislife.com" class="list-group-item list-group-item-action">
+                                    Access my Account
+                                </a>
+
+                                <a href="https://zfrmz.com/2OKeHBCmU32z7AlYqRcJ" class="list-group-item list-group-item-action">
+                                    Other
+                                </a>
+                                
+                            </div>
+                       
+                    </div>
+
+                </div>
+                
+            </div>
+            <p style="color: white;position: absolute;bottom: 0px;font-size: 12px;margin-bottom: 0px;">© {{year}} Save This Life Inc. All rights reserved.<br />Save This Life and Save This Life logo are registered trademarks of Save This Life, Inc.</p>
+        </section>
+    </main>
+
+    <script>
+        var index = elasticlunr(function () {
+            this.addField('title');
+            this.setRef('id');
+        });
+        div = document.getElementById("actions");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            index.addDoc({
+                "id": i+1,
+                "title": txtValue
+            }); 
+        }
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("inputAction");
+      filter = input.value.toUpperCase();
+
+
+       var results = index.search(filter, {
+            fields: {
+                title: {boost: 1},
+            }
+        });
+        console.log(results);
+    }
+    </script>
+</body>
+
+</html>
+

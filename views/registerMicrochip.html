@@ -1,0 +1,102 @@
+{{set . "Title" "Register Microchip | Save This Life Microchip and Pet Recovery System"}}
+{{set . "KeyWords" "Register Microchip"}}
+{{set . "Description" ""}}
+{{set . "Canonical" "register-microchip"}}
+{{template "header.html" .}}
+  <div class="enigma_header_breadcrum_title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Register Microchip</h1>
+          <!-- BreadCrumb -->
+          <ul class="breadcrumb">
+            <li data-original-title="" title=""><a href="/">Home</a></li>
+            <li data-original-title="" title="">Register Microchip</li>
+          </ul>
+          <!-- BreadCrumb --> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <section style="width:100%; float:left;">
+    <div class="container">
+      <div class="row enigma_blog_wrapper">
+        <div class="col-md-10 full-width">
+
+<div class="pakginfo">
+	<div class="top_info">
+		<h2 class="title"> Lifetime Microchip Registration</h2>
+	</div>
+
+  {{template "loading-error-success" .}}
+
+<div class="pure-g">
+    <div class="pure-u-2-3">
+      <div style="display:none" class="error"></div>
+    </div>
+    <div class="pure-u-2-3">
+      <form id="shopping_form" enctype="multipart/form-data" action="/register-microchip" method="POST" class="pure-form pure-form-stacked poster">
+        <fieldset>
+          <legend>Please enter the Microchip number</legend>
+
+          <div class="pure-g">
+            <div class="pure-u-1">
+
+              <input type="text" required="" placeholder="Pet's microchip number" class="pure-u-23-24" name="mic"> <button class="pure-button pure-button-primary" type="submit" name="add_cart">Next</button>
+            </div>
+
+          </div>
+
+          
+        </fieldset>
+      </form>
+    </div>
+</div>
+	</div>
+	</div>
+      </div>
+    </div>
+  </section>
+  <div class="enigma_callout_area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <p><i class="fa fa-thumbs-up"></i>Save This Life</p>
+        </div>
+        <div class="col-md-3"> <a class="enigma_callout_btn" href="">The fastest pet recovery system in the world. </a> </div>
+      </div>
+    </div>
+    <div class="enigma_callout_shadow"></div>
+  </div>
+  <!-- /enigma Callout Section --> 
+{{template "footer.html" .}}
+
+</body>
+</html>
+
+
+
+
+{{define "loading-error-success"}}
+<div class="">
+  <center><img class="js-loading" src="/public/img/ajax-loader.gif" title="loading..." style="display:none;" alt="loading" /></center>
+
+  <div class="js-error-container" style="display:none;">
+      <div class="panel panel-danger" style="color:red;">
+          <div class="panel-heading"><h7>Error</h7></div>
+          <div class="panel-body">
+              <div class="js-error-text"></div>
+          </div>
+      </div>
+  </div>
+
+  <div class="js-success-container" style="display:none;">
+      <div class="panel panel-success" style="color:green;">
+          <div class="panel-heading"><h7>Success</h7></div>
+          <div class="panel-body">
+              <div class="js-success-text"></div>
+          </div>
+      </div>
+  </div>
+</div>
+{{end}}

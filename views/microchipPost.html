@@ -1,0 +1,138 @@
+{{set . "KeyWords" .Microchip}}
+{{set . "Description" .Description}}
+{{set . "Canonical" .Microchip}}
+{{template "header.html" .}}
+  <div class="enigma_header_breadcrum_title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{.Microchip}}</h1>
+          <!-- BreadCrumb -->
+          <ul class="breadcrumb">
+            <li data-original-title="" title=""><a href="/">Home</a></li>
+            <li data-original-title="" title="">{{.Microchip}}</li>
+          </ul>
+          <!-- BreadCrumb --> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <section style="width:100%; float:left;">
+    <div class="container">
+      <div class="row enigma_blog_wrapper">
+        <div class="col-md-10 full-width">
+          <div class="enigma_blog_full">
+            <div class="enigma_blog_post_content--left">
+              <h3 style="color: #eb088b;"><u>{{.Microchip}}</u></h3>
+              <p>&nbsp;</p>
+              {{.Content}}
+
+              {{template "form.microchip" .}}
+              
+              {{template "loading-error-success" .}}
+              <p>&nbsp;</p>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="enigma_callout_area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <p><i class="fa fa-thumbs-up"></i>Save This Life</p>
+        </div>
+        <div class="col-md-3"> <a class="enigma_callout_btn" href="">The fastest pet recovery system in the world. </a> </div>
+      </div>
+    </div>
+    <div class="enigma_callout_shadow"></div>
+  </div>
+  <!-- /enigma Callout Section --> 
+{{template "footer.html" .}}
+
+</body>
+</html>
+
+
+
+{{define "loading-error-success"}}
+<div class="">
+  <center><img class="js-loading" src="/public/img/ajax-loader.gif" title="loading..." style="display:none;" alt="loading" /></center>
+
+  <div class="js-error-container" style="display:none;">
+      <div class="panel panel-danger" style="color:red;">
+          <div class="panel-heading"><h7>Error</h7></div>
+          <div class="panel-body">
+              <div class="js-error-text"></div>
+          </div>
+      </div>
+  </div>
+
+  <div class="js-success-container" style="display:none;">
+      <div class="panel panel-success" style="color:green;">
+          <div class="panel-heading"><h7>Success</h7></div>
+          <div class="panel-body">
+              <div class="js-success-text"></div>
+          </div>
+      </div>
+  </div>
+</div>
+{{end}}
+
+{{define "form.microchip"}}
+
+  <div class="push-right">
+    <hr class="blog-sep header-sep">
+  </div>
+
+  <form class="poster" method="post" action="" data-scrolltop="false" > 
+                
+      <input type="hidden" id="url_geoip" name="url_geoip" value="">
+      <p><font color="red"><b>PLEASE POST YOUR NAME AND PHONE # IF YOU FOUND MY PET <br></b></font></p>
+      <div id="petowner_form">
+        
+        Your Email:<br><input type="text" name="info_email" value="" ><br>
+        Your Phone Number <span style="color:red;">*</span>:<br><input type="text" name="info_phone" value="" required  
+        oninvalid="this.setCustomValidity('Phone number required')" oninput="this.setCustomValidity('')">&nbsp;  <br>
+        <i><b>You must enter either a valid email address or phone number for the message to be delivered successfully.</b></i><br>
+        &nbsp;  <br>
+        Does the pet need medical attention?
+        <br> <select name="info_medical" style="width: 200px;height: 29px;" required>
+          <option value="" >Choose One...</option>
+          <option value="needs">Yes</option>
+          <option value="doesn't need">No</option>
+          </select>
+          <br>
+          &nbsp; <br><span style="font-size: 10px;">I agree that I am sending the above communication solely in connection with the return of a lost or found pet and that I am not soliciting any product or service.</span><br>
+        <div class="g-recaptcha" data-sitekey="{{.SiteKey}}"></div>
+        <input type="submit" class="pure-button" name="envoi" value="Send">  
+          <font color="green"><b><div class="poster-response"></div></b></font>
+      </div>
+  </form>
+
+  <script type="text/javascript">
+    
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          var lat = position.coords.latitude;
+          var lng= position.coords.longitude;
+          
+          document.getElementById("url_geoip").value ="https://savethislife.com/geoip?lat="+lat+"&long="+lng;
+        },
+        function (error) {
+          console.log("An error occurred obtaining position.");
+          document.getElementById("url_geoip").value ="https://savethislife.com/geoip/";
+        });
+    }else{
+      document.getElementById("url_geoip").value ="https://savethislife.com/geoip/";
+    }
+    
+    
+  </script>
+
+{{end}}

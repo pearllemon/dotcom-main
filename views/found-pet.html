@@ -1,0 +1,206 @@
+{{set . "KeyWords" .Pet.Microchip}}
+{{set . "Description" .Description}}
+{{set . "Canonical" .Pet.Microchip}}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{.Title}}</title>
+    <link href="/public/img/logo_new.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="/public/css/bootstrap.4.4.1.min.css" />
+    <link rel="stylesheet" href="/public/css/font-awesome.min.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <script src="/public/js/jquery-2.2.4.min.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="http://elasticlunr.com/elasticlunr.min.js"></script>
+    <script src="/public/js/jquery.mask.min.js?v=1"></script>
+    <script src="/public/js/mainstl.js?v=1"></script> 
+    <meta name="keywords" content="{{.KeyWords}} , Save This Life Microchip and Pet Recovery System">
+    <meta name="description" content="{{.Description}}">
+    <link rel="canonical" href="https://www.savethislife.com/{{.Canonical}}">
+    <style>
+        .clean-block.clean-hero {
+            align-items: unset;
+        }
+        .clean-block.clean-hero .text {
+            max-width: none;
+        }
+        .list-group-item {
+            background-color: transparent;
+            border: none;
+        }
+        .list-group {
+            background-color: white;
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            max-height: 300px;
+            overflow: auto;
+        }
+        .dropdown-content {
+            border-radius: 2rem;
+            text-align: left;
+        }
+        .search-input {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+            border: none;
+            width: 100%;
+            padding-left: 2rem;
+        }
+        .search-input:focus {
+            outline: none;
+        }
+        .form-control-lg {
+            height: calc(1.5em + 2rem + 2px);
+        }
+
+    </style>
+</head>
+
+<body>
+    <main class="page landing-page" style="">
+        <section class="" style="background-color: #efeef1;">
+            <div class="text-left pt-2 pl-2 pr-2 pb-2" style="background-color: #fff;">
+                <a href="https://www.savethislife.com"><img src="public/img/logo_new1.png" style="width: 50px;" /></a>
+            </div>
+            <div class="text-center text" style="width:100%;min-height: 80vh;">
+                {{if .StepSearch}}
+                    {{template "form-search" .}}
+                {{end}}
+                {{if .StepPetNotFound}}
+                    {{template "pet-not-found" .}}
+                {{end}}
+                {{if .StepPetForm}}
+                    {{template "pet-form" .}}
+                {{end}}
+            </div>
+            <div class="text-center pt-4" style="color: white;background-color: #343a40;height: 100px;padding-top: 20;">© {{year}} Save This Life Inc. All rights reserved.<br />Save This Life and Save This Life logo are registered trademarks of Save This Life, Inc.</div>
+        </section>
+    </main>
+
+</body>
+
+</html>
+
+{{define "form-search"}}
+<h2 style="margin-top: 20px;">You found a Pet. What is the microchip number? <br/>
+    <p>Without a microchip# we cannot help to find the owner. Please have the pet scanned
+        and get the microchip# first.</p></h2>
+
+<div class="row">
+    <div class="col">
+           
+        <form method="GET" action="">
+            <div class="form-group">
+                <input class="form-control form-control-user" 
+                style="height: 50px;
+                border-radius: 30px;
+                text-align: center;" type="text" placeholder="(i.e 991001002827059)" name="microchip">
+            </div>
+            
+            <div class="form-group text-center">
+                <button style="border-radius: 30px;" class="btn btn-outline-primary btn-user col-sm-6 col-md-6 col-lg-6" type="submit">Search</button>
+            </div>
+        </form>
+       
+    </div>
+
+</div>
+{{end}}
+
+{{define "pet-not-found"}}
+<h2 style="margin-top: 40px;">Pet not registered! We don't have owner information. <br/>
+    <p>We're sorry, we cannot help to reunite this Pet. Please drop the pet in the closest Animal shelter or rescue.</p></h2>
+{{end}}
+
+{{define "pet-form"}}
+<div class="m-3">
+    <button style="border-radius: 30px;" class="btn btn-primary btn-user col-sm-6 col-md-6 col-lg-6 text-uppercase p-3" 
+    data-toggle="modal" data-target="#contact-owner" type="button">Contact Pet Parent</button>
+</div>
+
+<div class="row m-2">
+    <div id="petImage" class="carousel slide m-3 p-3 col-sm-12 col-md-4" style="background-color: black;border-radius: 30px;" data-ride="carousel">
+        <div class="carousel-inner pl-100 pr-100">
+        <div class="carousel-item active">
+            <img class="d-block" height="300" 
+            src="{{if ne .Pet.Image ""}}/image-pets/{{.Pet.Image}}{{else}}/public/img/no-image.png{{end}}" 
+            style="margin-left: auto;margin-right:auto" alt="First slide">
+        </div>
+        </div>
+    </div>
+    <div id="petDetails" class="text-left m-3 p-3 col-sm-12 col-md-7" style="border-top: 1px solid #d2d1d3;
+    border-bottom: 1px solid #d2d1d3; color: #4d4751; border-radius: 30px;
+    background-color: #fff;">
+        <h3 class="text-center"><u>Pet Details</u></h3>
+        <p class="text-uppercase"><b>Pet Name:</b> {{.Pet.Name}}</p>
+        <p class="text-uppercase"><b>Pet Microchip#:</b> {{.Pet.Microchip}} </p>
+        <p class="text-uppercase"><b>Pet Gender:</b> {{.Pet.Gender}}</p>
+        <p class="text-uppercase"><b>Pet Color:</b> {{.Pet.Color}}</p>
+        <p class="text-uppercase"><b>Pet Breed:</b> {{.Pet.Breed}}</p>
+    </div>
+</div>
+
+<div class="m-3">
+    <button style="border-radius: 30px;" class="btn btn-primary btn-user col-sm-6 col-md-6 col-lg-6 text-uppercase p-3" 
+    type="button" data-toggle="modal" data-target="#contact-owner">Contact Pet Parent</button>
+</div>
+
+<div class="modal fade" role="dialog" tabindex="-1" id="contact-owner" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-uppercase">Notify Pet Parent Now</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body text-left">
+                <span><b>Please enable location services in your browser settings if it is not. Your location will be sent to Pet Parent so he/she can easily contact you to pick up the pet.</b></span>
+                <form class="poster text-left mt-3" method="POST" action="/{{.Pet.Microchip}}">
+                    <input type="hidden" id="url_geoip" name="url_geoip" value="">
+                    <div class="form-group"><label>Your Email <i>(Optional)</i></label><input name="info_email" class="form-control form-control-lg w-100" type="email" style="border-radius: 15px;"></div>
+                    <div class="form-group"><label>Your Phone Number <i>(Required)</i></label><input name="info_phone" class="form-control form-control-lg w-100" type="text" placeholder="" required="" style="border-radius: 15px;"></div>
+                    <div class="form-group"><label>Does the pet need medical attention?</label>
+                        <div class="custom-control custom-radio"><input class="custom-control-input" type="radio" id="medical-yes" name="info_medical" value="needs"><label class="custom-control-label" for="medical-yes">Yes</label></div>
+                        <div class="custom-control custom-radio"><input class="custom-control-input" type="radio" id="medical-no" name="info_medical" value="doesn't need" checked><label class="custom-control-label" for="medical-no">No</label></div>
+                    </div>
+                    <div class="form-group"><div class="g-recaptcha" data-sitekey="{{.RecaptchaKey}}"></div></div>
+                    <div class="form-group">
+                        <p>I agree that I am sending the above communication solely in connection with the return of a lost or found pet and that I am not soliciting any product or service.</p>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div id="spinner" class="spinner-border text-primary js-loading" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-left text-danger js-error-container js-error-text" style="display: none;">Error.</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-left text-success js-success-container js-success-text" style="display: none;">Success.</p>
+                    </div>
+                    <div class="form-group float-right"><button class="btn btn-primary btn-block btn-lg shadow-none" type="submit" style="background-color: #eb088b;border-color: #eb088b;max-width: 300px;border-radius: 40px;">Send Text & Email</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var x = document.getElementById("url_geoip");
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.value = "https://savethislife.com/geoip/";
+    }
+
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var lng= position.coords.longitude;
+          
+        x.value ="https://savethislife.com/geoip?lat="+lat+"&long="+lng;
+    }
+</script>
+
+{{end}}

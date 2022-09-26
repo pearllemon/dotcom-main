@@ -1,0 +1,173 @@
+{{set . "Title" "Contact Save This Life | Save This Life Microchip and Pet Recovery System"}}
+{{set . "KeyWords" "Contact Save This Life"}}
+{{set . "Description" ""}}
+{{set . "Canonical" "contact-save-this-life"}}
+{{template "header.html" .}}
+  <div class="enigma_header_breadcrum_title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Contact Save This Life</h1>
+          <!-- BreadCrumb -->
+          <ul class="breadcrumb">
+            <li data-original-title="" title=""><a href="/">Home</a></li>
+            <li data-original-title="" title="">Contact Save This Life</li>
+          </ul>
+          <!-- BreadCrumb --> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <section style="width:100%; float:left;">
+    <div class="container">
+      <div class="row enigma_blog_wrapper">
+        <div class="col-md-10 full-width">
+          <div class="pakginfo">
+            <div class="top_info">
+              <h2 class="title"> Contact Save This Life </h2>
+            </div>
+
+            {{template "loading-error-success" .}}
+
+            <form id="contact_stl_form" enctype="multipart/form-data" action="{{.PostURL}}" method="post" class="poster">
+              <table width="100%">
+                <tbody>
+                  <tr>
+                    <td>First name:</td>
+                    <td><input type="text" value="" name="name1">
+                      <font color="red">*</font></td>
+                  </tr>
+                  <tr>
+                    <td>Last name:</td>
+                    <td><input type="text" value="" name="name2">
+                      <font color="red">*</font></td>
+                  </tr>
+
+                  {{if .IsFields1 }}
+                    {{template "fields-1" .}}
+                  {{end}}
+
+                  {{if .IsFields2 }}
+                    {{template "fields-2" .}}
+                  {{end}}
+
+                  {{if .IsFields3 }}
+                    {{template "fields-3" .}}
+                  {{end}}
+  
+                </tbody>
+              </table>
+              <br>
+              <div align="right"><b><font color="red">* Denotes Required Field</font></b></div>
+              <div align="center">
+                <input type="submit" value="Send" name="send" class="b_submit reg_btn">
+              </div>
+            </form>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="enigma_callout_area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <p><i class="fa fa-thumbs-up"></i>Save This Life</p>
+        </div>
+        <div class="col-md-3"> <a class="enigma_callout_btn" href="">The fastest pet recovery system in the world. </a> </div>
+      </div>
+    </div>
+    <div class="enigma_callout_shadow"></div>
+  </div>
+  <!-- /enigma Callout Section --> 
+{{template "footer.html" .}}
+
+</body>
+</html>
+
+
+{{define "loading-error-success"}}
+<div class="">
+  <center><img class="js-loading" src="/public/img/ajax-loader.gif" title="loading..." alt="loading" style="display:none;"  /></center>
+
+  <div class="js-error-container" style="display:none;">
+      <div class="panel panel-danger" style="color:red;">
+          <div class="panel-heading"><h7>Error</h7></div>
+          <div class="panel-body">
+              <div class="js-error-text"></div>
+          </div>
+      </div>
+  </div>
+
+  <div class="js-success-container" style="display:none;">
+      <div class="panel panel-success" style="color:green;">
+          <div class="panel-heading"><h7>Success</h7></div>
+          <div class="panel-body">
+              <div class="js-success-text"></div>
+          </div>
+      </div>
+  </div>
+</div>
+{{end}}
+
+{{define "fields-1"}}
+<tr>
+  <td>Microchip number:</td>
+  <td><input type="text" value="" name="mic">
+    <font color="red">*</font></td>
+</tr>
+<tr>
+  <td>Phone number:</td>
+  <td><input type="text" value="" name="phone">
+    <font color="red">*</font></td>
+</tr>
+<tr>
+  <td>Email:</td>
+  <td><input type="text" value="" name="email">
+    <font color="red">*</font></td>
+</tr>
+{{end}}
+
+{{define "fields-2"}}
+<tr>
+  <td>Description:</td>
+  <td><input type="text" value="" name="desc">
+    <font color="red">*</font></td>
+</tr>
+<tr>
+  <td>Microchip number:</td>
+  <td><input type="text" value="" name="mic">
+    <font color="red">*</font></td>
+</tr>
+<tr>
+  <td>Phone number:</td>
+  <td><input type="text" value="" name="phone">
+    <font color="red">*</font></td>
+</tr>
+<tr>
+  <td>Email:</td>
+  <td><input type="text" value="" name="email">
+    <font color="red">*</font></td>
+</tr>
+{{end}}
+
+{{define "fields-3"}}
+<tr>
+  <td>Microchip numbers(separate them by ";" ):</td>
+  <td><input type="text" value="" name="mic">
+    <font color="red">*</font></td>
+</tr>
+<tr>
+  <td>Phone number:</td>
+  <td><input type="text" value="" name="phone">
+    <font color="red">*</font></td>
+</tr>
+<tr>
+  <td>Email:</td>
+  <td><input type="text" value="" name="email">
+    <font color="red">*</font></td>
+</tr>
+{{end}}
+
+

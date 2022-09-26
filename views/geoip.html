@@ -1,0 +1,142 @@
+{{set . "Title" "Location Of Your Lost Pet | Save This Life Microchip and Pet Recovery System"}}
+{{set . "KeyWords" "Location Of Your Lost Pet"}}
+{{set . "Description" "Save This Life is excited to provide the Fastest Pet Recovery System in the World, including:   134.2 kHz Universally Read 11784/11785 ISO-Compatible"}}
+{{set . "Canonical" "/geoip"}}
+{{template "header.html" .}}
+  <div class="enigma_header_breadcrum_title">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Location Of Your Lost Pet</h1>
+          <!-- BreadCrumb -->
+          <ul class="breadcrumb">
+            <li data-original-title="" title=""><a href="/">Home</a></li></li>
+            <li data-original-title="" title="">Location Of Your Lost Pet</li>
+          </ul>
+          <!-- BreadCrumb --> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <section style="width:100%; float:left;">
+    <div class="container">
+      <div class="row enigma_blog_wrapper">
+        <div class="col-md-12">
+
+<div class="pakginfo">
+  <div class="top_info">
+    <h2 class="title"> <img src ="/public/img/powered-by-google-on-white3_hdpi.png" alt="Powered By Google"></h2>
+  </div>
+
+  {{if .NoCoordinates}}
+  
+  <div>
+    <p style="color: black;">The message sender did not share their location with Save This Life so the GPS mapping is not available. If you are the sender of this message, please either change your phone or computer settings to allow tracking and share your location or send the message again after clicking "Yes" when the pop-up "Would you like to allow Save This Life to track you?" appears.</p>
+  </div>
+  {{else}}
+    
+    <div id="map" style="height: 500px;"></div>
+   {{end}}
+
+
+
+<div id="banner"></div>
+      
+</p></div>  
+      
+    </div>
+      </div>
+    </div>
+  </section>
+  <div class="enigma_callout_area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <p><i class="fa fa-thumbs-up"></i>Save This Life</p>
+        </div>
+        <div class="col-md-3"> <a class="enigma_callout_btn" href="">The fastest pet recovery system in the world. </a> </div>
+      </div>
+    </div>
+    <div class="enigma_callout_shadow"></div>
+  </div>
+  <!-- /enigma Callout Section --> 
+{{template "footer.html" .}}
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEWjpixKLeWpHWJDTU_9BAeQhWprgmFfc&callback=initMap" type="text/javascript"></script>
+
+<script type="text/javascript">
+    document.documentElement.className = 'js';
+    
+</script>
+<script>
+    function countChar(val) {
+      var len = val.value.length;
+      if (len >= 70) {
+        val.value = val.value.substring(0, 70);
+  } else {
+          $('#charNum').text(70 - len);
+      }
+    };
+</script>
+  
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+
+<script type="text/javascript">
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+ 
+jQuery(function(){
+  var lat = getUrlVars()["lat"];
+  var long = getUrlVars()["long"];
+  var cc = getUrlVars()["cc"];
+          var cn = getUrlVars()["cn"];
+  var rc = getUrlVars()["rc"];
+          var rn = getUrlVars()["rn"];
+  var city = getUrlVars()["city"];
+          
+      // Coordonnées du cinéma Pathé Bellecour Lyon
+  var myLatlng = new google.maps.LatLng(lat, long);
+   
+  // Carte centrée sur le cinéma, zoom 16
+  var myMapOptions = {
+    zoom: 14,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+          streetViewControl: true
+  };
+   
+  // Création de la carte
+  var myMap = new google.maps.Map(
+    document.getElementById('map'),
+    myMapOptions
+    );
+   
+  // Création du Marker
+  var myMarker = new google.maps.Marker({
+    // Coordonnées du cinéma
+    position: myLatlng,
+    map: myMap,
+    title: "SMS or email Sender location"
+  });
+  var infowindow = new google.maps.InfoWindow({ 
+    content: "<div><b>Latitude:</b> "+lat+"<br/><b>Longitude:</b> "+long+"</div>", 
+    maxWidth: 100 });   
+  google.maps.event.addListener(myMarker, "mouseclick", function() { infowindow.open(myMap, myMarker); }); 
+
+    });
+</script>
+
+</body>
+</html>
